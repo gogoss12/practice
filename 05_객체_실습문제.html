@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>객체 실습 문제</title>
+    <style>
+        .print {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>객체 실습 문제</h1>
+    <hr>
+
+    <h2>문제1</h2>
+    <p>
+        <!-- 생성자 함수 사용x , 중괄호 객체 리터럴 사용하기 -->
+        입력창 누르면 이름, 나이, 주소를 prompt()로ㅓ 입력받은 후 입력정보를 member라는 객체에 저장한다. <br>
+        이 후 출력 버튼을 클릭하면 member 객체 안에 있는 정보를 출력 창에 출력되도록 만들어보자. <br>
+        (단, 입력을 받지 않은 상태에서 출력 버튼을 클릭하면 '입력을 먼저 해주세요.' 라는 알림을 띄우도록 한다.)
+        <br>
+        ex)
+        이름 : 홍길동 <br>
+        나이 : 20세 <br>
+        주소 : 서울시 테헤란로 <br>
+    </p>
+
+    <fieldset>
+        <legend>출력창</legend>
+
+        <div class="print" id="print1" style="overflow: scroll;"></div>
+
+    </fieldset>
+
+    <br>
+
+    <button onclick="test();">입력</button>
+    <button onclick="output();">출력</button>
+
+    <script>
+        var member;
+        var members = [];
+        function test() {
+            member = {
+                name: prompt('이름을 입력해주세요 :'),
+                age: prompt('나이을 입력해주세요 :'),
+                addr: prompt('주소를 입력해주세요 :')
+            };
+            console.log(member);
+            members.push(member);
+        };
+
+        function output() {
+
+            console.log(members);
+            console.log(members.length);
+            var result = document.getElementById('print1');
+            
+            if (members.length === 0) {
+                alert('입력을 먼저해주세요');
+            } else {
+                for (var i = 0; i < members.length; i++) {
+                    result.innerHTML += `이름 : ${members[i].name} <br>
+                                         나이 : ${members[i].age} <br>
+                                         주소 : ${members[i].addr} <br><br>`
+                };
+            }
+            // result.innerHTML += `이름 : ${member.name} <br>
+            //                      나이 : ${member.age} <br>
+            //                      주소 : ${member.addr} <br><br>`;
+        };
+
+    </script>
+
+
+    <hr>
+
+    <h2>문제2</h2>
+    <p>
+        다음 입력 및 출력 버튼 클릭시 학생정보를 3명 받아서 테이블에 출력하는 코드를 작성하세요. <br>
+        (단, 학생 정보는 객체로 배열에 저장하여 테이블에 입력하세요)
+    </p>
+
+
+    <div align='center'>
+        <table id="memberInfo" border='1' style="width: 500px; height: 300px;">
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <td class="name"></td>
+                <td class="age"></td>
+                <td class="addr"></td>
+            </tr>
+            <tr>
+                <td class="name"></td>
+                <td class="age"></td>
+                <td class="addr"></td>
+            </tr>
+            <tr>
+                <td class="name"></td>
+                <td class="age"></td>
+                <td class="addr"></td>
+            </tr>
+        </table>
+        <label>학생정보 테이블</label> <br>
+        <button onclick="addMember();">입력 및 출력</button>
+    </div>
+
+    <script>
+
+
+
+    </script>
+    
+
+</body>
+
+</html>
