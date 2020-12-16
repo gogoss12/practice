@@ -113,7 +113,40 @@
     </div>
 
     <script>
+        var add = [];
+        var members = [];
+        var member;
+        function addMember() {
+            var addName = document.getElementById('memberInfo').getElementsByClassName('name');
+            var addAge = document.getElementById('memberInfo').getElementsByClassName('age');
+            var addAddr = document.getElementById('memberInfo').getElementsByClassName('addr');
 
+                member = {
+                name: prompt('이름 :'),
+                age: prompt('나이'),
+                addr: prompt('주소')
+            };
+            members.push(member);
+            add.push(addName);
+            add.push(addAge);
+            add.push(addAddr);
+
+            for(var i = 0; i < add.length; i++){
+                for(var j = 0; j < i; j++){
+                    if(i === j){
+                        console.log(add[i][j]);
+                        j--;
+
+                    }
+                }
+            }
+            
+            console.log(member);
+            console.log(members);
+            console.log(add);
+
+            
+        }
 
 
     </script>
