@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>초 단위(00,01,02...으로)변경</title>
+    <style>
+        .area {
+            border: 1px solid;
+            /* width: 500px; */
+            height: 300px;
+            margin-top: 15px;
+            background-color: ivory;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="test3();">실행</button>
+    <button onclick="test4();">종료</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        var id;
+        function test3() {
+            var area = document.getElementById('area1');
+
+            // 일정 시간마다 함수 콜백함수를 반복 실행
+            id = setInterval(function () {
+                var date = new Date();
+                var seconds = date.getSeconds();
+
+                console.log(date.getMinutes());
+                if(seconds < 10){
+                    seconds = "0" + seconds;
+                }
+
+                area.innerHTML = `${date.getHours()-12} : ${date.getMinutes()} : ${seconds}`;
+            }, 1000);
+        }
+
+        function test4() {
+            var area = document.getElementById('area1');
+
+            clearInterval(id);
+        }
+    </script>
+</body>
+</html>
