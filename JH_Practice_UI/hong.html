@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../05.jQuery/js/jquery-3.5.1.js"></script>
+    <style>
+        .allok {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        sjakljfieal
+    </p>
+    <label>모두동의 :<input type="checkbox" id="all"></label> <br>
+    <label><input type="checkbox" id="id1" class="info" >1. 개인정보수집동의</label> <br>
+    <label><input type="checkbox" id="id2" class="info">2. 개인정보제공동의</label>
+    <label><input type="checkbox" id="id3" class="info">2. 개인정보</label>
+    <label><input type="checkbox" id="id4" class="info">2. 정보제공동의</label>
+    <br>
+    <button class="">확인</button>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#id2,#id1').change(function () {
+                if ($('#id1').prop('checked') && $('#id2').prop('checked')) {
+                    $('button').addClass('allok');
+                    $('#all').prop('checked',true)
+                } else {
+                    $('button').removeClass('allok');
+                    $('#all').prop('checked',false)
+                }
+            });
+
+            $('#all').change(function () {
+                if ($(this).prop('checked')) {
+                    $('input:checkbox').prop('checked', true);
+                    $('button').addClass('allok');
+                } else {
+                    $('input:checkbox').prop('checked', false);
+                    $('button').removeClass('allok');
+                }
+            })
+        })
+        var info = document.getElementsByTagName('p');
+        console.log(info);
+
+        for (const key in info) {
+            info[key].style.backgroundColor = 'red';
+        }
+
+
+    </script>
+</body>
+
+</html>

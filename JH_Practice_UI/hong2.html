@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .allOk {
+        background-color: #6666ff;
+    }
+    
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<body>
+    <div style = "width : 500px; margin:auto; margin-top : 200px; height:300px; background-color:#bbbbbb; padding-top:100px;">
+        <div style = "width : 300px; margin:auto; background-color : #dddddd">
+            <div>
+                <input id="allAgree" type="checkbox"/><label for="allAgree"> 모두 동의</label> 
+            </div>
+            <div>
+                &nbsp;&nbsp;<input id="agree1" class = "agree" type="checkbox"/><label for="agree1"> 1. 개인정보수집동의</label> 
+            </div>
+            <div>
+                &nbsp;&nbsp;<input id="agree2" class = "agree" type="checkbox"/><label for="agree2"> 2. 개인정보제공동의</label> 
+            </div>
+        </div>
+        <div >
+            <div style= "width:100px; margin:auto;margin-top:40px;">
+                <button id = "btn" style = "width:100px;">확인</button>
+            </div>
+            <div class="notice" style= "width:250px; margin:auto;margin-top:40px; color:red;">
+                ※ 모두 동의하셔야 합니다.
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function(){
+            $("#allAgree").click(function(event){
+                var allOk = $("#allAgree").prop("checked");
+                $(".agree").prop("checked", allOk);
+                chageColor(allOk);
+            })
+    
+            $(".agree").click(function(event){
+                var boolT = true;
+                var agrees = $(".agree");
+                for(var i =0; i<agrees.length; i++){
+                    boolT = boolT && agrees[i].checked;
+                }
+                if(boolT){
+                    console.log("전체가 다 true인것.")
+                    $("#allAgree").prop("checked", true);
+                    chageColor(true);
+                }
+                else{
+                    console.log("하나라도 false인것.")
+                    $("#allAgree").prop("checked", false);
+                    chageColor(false);
+                }
+            })
+        })
+    
+        function chageColor(bool){
+            $("#btn").toggleClass("allOk",bool);
+            !bool?$(".notice").show():$(".notice").hide();
+        }
+    </script>
+</body>
+</html>
