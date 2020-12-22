@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+    <script src="../05.jQuery/js/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <table border="1" style="width: 100px; height: 100px; margin-bottom: 10px;">
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+        <tr>
+            <td>d</td>
+            <td>e</td>
+            <td>f</td>
+        </tr>
+        <tr>
+            <td>g</td>
+            <td>h</td>
+            <td>i</td>
+        </tr>
+    </table>
+
+        <label>table 값 : <input type="text" id="text"></label>
+    <script>
+        $(document).ready(function () {
+            $('tr').on('click',function() {
+                console.log($(this).children());
+                var arr = $(this).children();
+
+                $('#text').val(arr.text());
+            });
+        });
+
+    </script>
+</body>
+</html>
