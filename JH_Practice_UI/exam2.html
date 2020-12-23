@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../05.jQuery/js/jquery-3.5.1.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('tr').on('click',function() {
+                var t = $(this).children();
+                for(var i = 0; i < t.length; i++){
+                    $('#1').text(t[0].innerText + ' / ');
+                    $('#2').text(t[1].innerText + ' / ');
+                    $('#3').text(t[2].innerText);
+                };
+            });
+        });
+
+        // $(document).ready(function () {
+        //     $('tr').on('click',function () {
+        //         console.log($(this).text());
+        //         var t = $(this).text();
+        //         console.log(t.split('/'));
+        //         $('span').siblings().text(t.split('/'));
+        //     });
+        // });
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr style="text-align: center;">
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>첫 번째 게시물 입니다</td>
+            <td>홍길동</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>두 번째 게시물 입니다</td>
+            <td>홍길동</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>세 번째 게시물 입니다</td>
+            <td>홍길동</td>
+        </tr>
+    </table>
+    <div id="text">선택한 게시물 :
+        <span id="1"></span>
+        <span id="2">/</span>
+        <span id="3">/</span>
+    </div>
+</body>
+</html>

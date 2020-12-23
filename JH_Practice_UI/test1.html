@@ -31,9 +31,18 @@
                 console.log($(this).children());
                 var arr = $(this).children();
 
-                $('#text').val(arr.text());
+                console.log(arr.text());
+                console.log(arr.text().split(''));
+
+                var b = arr.text().split('');
+                
+                for (const key in b) {
+                        
+                    $('#text').val(b[1]);
+                }
             });
         });
+
 
     </script>
 </body>
