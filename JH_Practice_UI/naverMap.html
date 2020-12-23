@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../05.jQuery/js/jquery-3.5.1.js"></script>
+</head>
+
+<body>
+    <h1>내 사이트임ㅎㅇ</h1>
+    <script>
+        $.ajax({
+            method: "GET ",
+            url: "https://dapi.kakao.com/v2/search/web",
+            data: {query: "이효리" },
+            Headers: {Authorization: "KakaoAK 0b16897defcecf1e28718d89d26af89f"}
+        })
+            .done(function (msg) {
+                alert("Data Saved: " + msg);
+            });
+    </script>
+</body>
+
+</html>
