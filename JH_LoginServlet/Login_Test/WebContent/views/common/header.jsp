@@ -1,5 +1,11 @@
+<%@page import="JH.home.Test.mvc.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	Member member = (Member)session.getAttribute("loginMember");
+	System.out.println(member);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +20,10 @@
 		<h1>Hello TestLogin</h1>
 		<div class = login-container>
 		<!-- 로그인 폼 만들어보자 -->
-			<form id="loginForm">
+			<%
+				if(member == null) {
+			%>
+			<form id="loginForm" action="<%=request.getContextPath()%>/Login" method = "POST">
 				<table>
 					<tr>
 						<td>
@@ -28,10 +37,31 @@
 							<label>패스워드 : <input type="password" name="userPwd" id="userPwd" ></label>
 						</td>
 						<td>
-							<input type="button" value="로그인">
+							<input type="submit" value="로그인">
 						</td>
 					</tr>
 				</table>
 			</form>
+			<% } else { %>
+			<table>
+					<tr>
+						<td> <%=member.getTestName()%> 님 안녕하세요</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="마이페이지" >
+						</td>
+						<td>
+							<input type="button" value="로그아웃"
+							onclick = "location.replace('<%=request.getContextPath()%>/Logout')">
+						</td>
+					</tr>
+				</table>
+			
+			
+			
+			
+			
+			<% } %>
 		</div>
 	</header>

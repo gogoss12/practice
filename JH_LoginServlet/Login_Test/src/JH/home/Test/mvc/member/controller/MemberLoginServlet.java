@@ -1,13 +1,19 @@
 package JH.home.Test.mvc.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/Login")
+import JH.home.Test.mvc.member.model.service.MemberService;
+import JH.home.Test.mvc.member.model.vo.Member;
+
+@WebServlet(name = "Login", urlPatterns = "/Login")
 public class MemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -16,7 +22,28 @@ public class MemberLoginServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = 
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");		
+		Member member = null;
+		
+		member = new MemberService().login(userId, userPwd);
+		
+		System.out.println(userId + userPwd); //null 값이 넘어옴
+		if(member != null) {
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("loginMember", member);
+			
+			response.sendRedirect(request.getContextPath() + "/");
+		}else {
+			request.setAttribute("msg", "아이디 비밀번호 틀림");
+			request.setAttribute("location", "/");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("views/common/msg.jsp");
+			
+			dispatcher.forward(request, response);
+		}
+		
 	}
-
 }
