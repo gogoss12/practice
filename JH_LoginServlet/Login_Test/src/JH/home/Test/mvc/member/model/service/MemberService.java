@@ -2,7 +2,7 @@ package JH.home.Test.mvc.member.model.service;
 
 import java.sql.Connection;
 
-import static JH.home.Test.mvc.common.JDBCTemplate.*;
+import static JH.home.Test.mvc.common.jdbc.JDBCTemplate.*;
 import JH.home.Test.mvc.member.model.dao.MemberDao;
 import JH.home.Test.mvc.member.model.vo.Member;
 

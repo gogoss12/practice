@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	Member member = (Member)session.getAttribute("loginMember");
-	System.out.println(member);
 
 %>
 <!DOCTYPE html>
@@ -57,10 +56,6 @@
 						</td>
 					</tr>
 				</table>
-			
-			
-			
-			
 			
 			<% } %>
 		</div>

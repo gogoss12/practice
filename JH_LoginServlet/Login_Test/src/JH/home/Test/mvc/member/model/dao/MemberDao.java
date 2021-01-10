@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import JH.home.Test.mvc.common.JDBCTemplate;
+import JH.home.Test.mvc.common.jdbc.JDBCTemplate;
 import JH.home.Test.mvc.member.model.vo.Member;
 
 public class MemberDao {
@@ -48,6 +48,7 @@ public class MemberDao {
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
+			// sdklfajlak
 		}
 		
 		return member;

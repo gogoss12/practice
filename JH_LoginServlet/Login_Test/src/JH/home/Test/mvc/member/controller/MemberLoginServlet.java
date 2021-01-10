@@ -25,15 +25,16 @@ public class MemberLoginServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");		
 		Member member = null;
-		
+		System.out.println("userId : " + userId + ", userPwd : " + userPwd);
 		member = new MemberService().login(userId, userPwd);
+		System.out.println(member);
 		
-		System.out.println(userId + userPwd); //null 값이 넘어옴
 		if(member != null) {
 			
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("loginMember", member);
+			request.setAttribute("msg", "로그인성공!");
 			
 			response.sendRedirect(request.getContextPath() + "/");
 		}else {

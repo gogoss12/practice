@@ -14,10 +14,10 @@
 <body>
 	<script>
 		// 알림메세지
-		alter("<%= msg %>")
+		alter("<%= msg %>");
 		
 		//이동
-		location.replace(<%= request.getContextPath()%><%= location %>);
+		location.replace("<%= request.getContextPath()%><%= location %>");
 	
 	</script>	
 </body>
