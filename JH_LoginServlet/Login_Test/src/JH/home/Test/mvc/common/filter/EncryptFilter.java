@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import JH.home.Test.mvc.common.wrapper.EncryptWrapper;
-@WebFilter(filterName = "EncryptFilter", servletNames = {"Login"})
+@WebFilter(filterName = "EncryptFilter", servletNames = {"Login", "enroll"})
 public class EncryptFilter implements Filter {
 
     public EncryptFilter() {

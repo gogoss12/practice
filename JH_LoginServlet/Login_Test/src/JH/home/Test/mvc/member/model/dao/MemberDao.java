@@ -48,10 +48,36 @@ public class MemberDao {
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
-			// sdklfajlak
+
 		}
 		
 		return member;
+	}
+
+	public int insertMember(Connection conn, Member member) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("INSERT INTO TEST VALUES(SEQ_UNO.NEXTVAL, SYS_GUID(), ?, ?,'ROLE_USER', ?, ?, ?, SYSDATE, SYSDATE, DEFAULT)");
+			
+			pstmt.setString(1, member.getTestId());
+			pstmt.setString(2, member.getTestPwd());
+			pstmt.setString(3, member.getTestName());
+			pstmt.setString(4, member.getPhone());
+			pstmt.setString(5, member.getAddress());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

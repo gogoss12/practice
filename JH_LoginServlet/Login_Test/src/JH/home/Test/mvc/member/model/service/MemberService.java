@@ -20,5 +20,21 @@ public class MemberService {
 		
 		return member;
 	}
+
+	public int EnrollMember(Member member) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.insertMember(conn, member);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
 	
 }

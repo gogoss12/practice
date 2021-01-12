@@ -39,6 +39,11 @@
 							<input type="submit" value="로그인">
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<input type="button" value="회원가입" onclick="location.href ='<%=request.getContextPath()%>/member/enroll';">
+						</td>
+					</tr>
 				</table>
 			</form>
 			<% } else { %>
